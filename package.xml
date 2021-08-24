@@ -1,22 +1,14 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>pmr3100_controlador</name>
+  <name>sumo_controller</name>
   <version>0.0.0</version>
-  <description>The pmr3100_controlador package</description>
+  <description>The sumo_controller package</description>
 
   <maintainer email="comp@thunderatz.org">Equipe ThundeRatz</maintainer>
 
-  <author email="felipe.bagni@thunderatz.org">Felipe Bagni</author>
-  <author email="felipe.gomes@thunderatz.org">Felipe Gomes de Melo</author>
-  <author email="felipe.luna@thunderatz.org">Felipe Luna</author>
-  <author email="gabriel.kishida@thunderatz.org">Gabriel Kishida</author>
-  <author email="leticia.kimoto@thunderatz.org">Leticia Kimoto</author>
-  <author email="thalles.carneiro@thunderatz.org">Thalles Carneiro</author>
-  <author email="lucas.schneider@thunderatz.org">Lucas Schneider</author>
   <author email="maria.rezende@thunderatz.org">Maria Fernanda Rezende</author>
-  <author email="lucas.haug@thunderatz.org">Lucas Haug</author>
-  <author email="vanderson.santos@thunderatz.org">Vanderson dos Santos</author>
-  <author email="wu.kam@thunderatz.org">Wu Kam Long</author>
+  <author email="gabriel.cosme@thunderatz.org">Gabriel Cosme</author>
+
 
   <license>MIT</license>
 
@@ -24,7 +16,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <url type="repository">https://github.com/ThundeRatz/ros-python-template</url>
+  <url type="repository">https://github.com/ps-thunderatz/sumo_controller/</url>
 
   <depend>rospy</depend>
 
