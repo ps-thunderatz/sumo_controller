@@ -10,7 +10,7 @@ CONTROL_RATE = 60  # Hz
 
 
 def main():
-    rospy.init_node("robot_controller", disable_signals=True)
+    rospy.init_node("sumo_controller", disable_signals=True, anonymous=True)
     rospy.loginfo(f"Node de controle iniciado {rospy.get_time()}")
     rate = rospy.Rate(CONTROL_RATE)
 
