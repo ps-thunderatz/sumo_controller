@@ -1,7 +1,7 @@
 import rospy
 from std_msgs.msg import Float64
 
-MAX_VEL = 15  # rad/s
+MAX_VEL = 3  # rad/s 
 
 class Motors:
     def __init__(self, left_motor_topic, right_motor_topic):
@@ -26,20 +26,21 @@ class Motors:
 
         Args:
             left_command (int): Comando a ser enviado ao motor esquerdo,
-                de -255 (velocidade máxima, ré) até 255 (velocidade máxima, para frente)
+                de -100 (velocidade máxima, ré) até 100 (velocidade máxima, para frente)
             right_command (int): Comando a ser enviado ao motor direito,
-                de -255 (velocidade máxima, ré) até 255 (velocidade máxima, para frente)
+                de -100 (velocidade máxima, ré) até 100 (velocidade máxima, para frente)
 
         Raises:
-            ValueError: Se qualquer um dos comandos for maior em módulo do que 255
+            ValueError: Se qualquer um dos comandos for maior em módulo do que 100
         """
-        if abs(left_command) > 255:
-            raise ValueError(f"Comando de velocidade não pode ser maior que 255! Recebido {left_command}")
+        if abs(left_command) > 100:
+            raise ValueError(f"Comando de velocidade não pode ser maior que 100! Recebido {left_command}")
 
-        if abs(right_command) > 255:
-            raise ValueError(f"Comando de velocidade não pode ser maior que 255! Recebido {right_command}")
+        if abs(right_command) > 100:
+            raise ValueError(f"Comando de velocidade não pode ser maior que 100! Recebido {right_command}")
 
-        left_vel = int(left_command)/255*MAX_VEL
-        right_vel = int(right_command)/255*MAX_VEL
+        left_vel = int(left_command)/100*MAX_VEL
+        right_vel = int(right_command)/100*MAX_VEL
+        
         self.left_pub.publish(Float64(left_vel))
         self.right_pub.publish(Float64(right_vel))
