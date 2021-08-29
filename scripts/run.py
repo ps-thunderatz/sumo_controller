@@ -3,8 +3,6 @@
 import rospy
 from std_msgs.msg import Float64
 
-from control import setup, loop
-
 
 CONTROL_RATE = 60  # Hz
 
@@ -14,11 +12,13 @@ def main():
     rospy.loginfo(f"Node de controle iniciado {rospy.get_time()}")
     rate = rospy.Rate(CONTROL_RATE)
 
-    setup()
+    # Inicialize os sensores e motores aqui
 
     while not rospy.is_shutdown():
-        loop()
+        # Escreva aqui seu código para controlar o sumô
+        
         rate.sleep()
+
 
 
 if __name__ == "__main__":
