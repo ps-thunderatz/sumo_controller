@@ -23,7 +23,7 @@ class MatchState:
         Args:
             data (std_msgs/UInt32): Dados da leitura do estado da partida
         """
-        self.brightness = data.data
+        self.state = data.data
 
     def started(self):
         """ Método para obter o estado da partida
