@@ -32,3 +32,11 @@ class LineSensor:
             uint32 : retorna o valor da última leitura de luz
         """
         return self.brightness
+    def on_line(self):
+        """ Checa se o sensor de linha está lendo uma linha ou não
+        """
+        white_line = rospy.get_param('white_line')
+
+        if self.brightness < white_line:
+            return True
+        return False
