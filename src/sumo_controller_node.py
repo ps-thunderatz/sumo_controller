@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-
 import rospy
 from std_msgs.msg import Float64
 
-
 CONTROL_RATE = 60  # Hz
 
-
 def main():
+    """ Lógica principal do node de controle
+    """
     rospy.init_node("sumo_controller", disable_signals=True, anonymous=True)
     rospy.loginfo(f"Node de controle iniciado {rospy.get_time()}")
     rate = rospy.Rate(CONTROL_RATE)
