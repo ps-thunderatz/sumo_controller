@@ -36,8 +36,17 @@ class LineSensor:
         """
         return self.brightness
 
-    def on_line(self):
+    def is_on_line(self):
         """ Checa se o sensor de linha está lendo uma linha ou não
         """
-        range_threshold = (self.white_line - self.black_line) * 0.6
-        return self.brightness < self.white_line - range_threshold
+        threshold = (self.white_line - self.black_line)
+
+        on_line = False
+
+        if on_line is False and self.brightness < self.black_line + (threshold * 0.3):
+            on_line = True
+
+        if on_line is True and self.brightness > self.white_line - (threshold * 0.6):
+            on_line = False
+
+        return on_line
