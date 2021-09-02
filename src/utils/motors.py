@@ -1,7 +1,7 @@
 import rospy
 from std_msgs.msg import Float64
 
-MAX_VEL = 3  # rad/s 
+MAX_VEL = 30  # rad/s 
 
 class Motors:
     def __init__(self, left_motor_topic, right_motor_topic):
