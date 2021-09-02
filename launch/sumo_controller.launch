@@ -1,0 +1,11 @@
+<launch>
+  <arg name="team" default="blue" />
+  <group ns="$(arg team)_team">
+
+    <rosparam command="load" file="$(find sumo_controller)/config/line_sensor_param.yaml"/>
+
+    <node pkg="sumo_controller" type="sumo_controller_node.py" name="sumo_controller_node" output="screen">
+    </node>
+    
+  </group>
+</launch>

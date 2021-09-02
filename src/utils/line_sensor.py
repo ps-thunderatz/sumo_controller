@@ -8,8 +8,16 @@ class LineSensor:
         Args:
             topic_name (string): Nome do tópico do sensor de linha
         """
-        self.brightness = 1023 # Inicializa como branco
+        self._brightness = 1023 # Inicializa como branco
         self.topic_name = topic_name
+
+        white_line = rospy.get_param('white_line')
+        black_line = rospy.get_param('black_line')
+        threshold = (white_line - black_line) / 3
+        
+        self.upper_bound = white_line - threshold
+        self.lower_bound = black_line + threshold
+        self.on_line = False
 
     def initialise(self):
         """Inicializa o subscriber para leitura do sensor
@@ -23,12 +31,18 @@ class LineSensor:
         Args:
             data (std_msgs/UInt32): Dados da leitura do sensor
         """
-        self.brightness = data.data
+        self._brightness = data.data
 
-    def get_brightness(self):
-        """ Método para obter o valor da última leitura de luz refletida
-            A leitura varia de 0 (mais escura possível) para 1023 (mais clara possível)
-        Returns:
-            uint32 : retorna o valor da última leitura de luz
+        if not self.on_line:
+            self.on_line = self.brightness < self.lower_bound
+        else:
+            self.on_line = self.brightness < self.upper_bound
+
+    @property
+    def brightness(self):
+        return self._brightness
+
+    def is_on_line(self):
+        """ Checa se o sensor de linha está lendo uma linha ou não
         """
-        return self.brightness
+        return self.on_line
