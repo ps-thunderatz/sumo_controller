@@ -2,12 +2,15 @@ import rospy
 from std_msgs.msg import Bool
 
 class MatchState:
-    def __init__(self):
+    def __init__(self, topic_name):
         """Cria um novo objeto para fazer a leitura do estado da partida
+
+        Args:
+            topic_name (string): Nome do tópico do estado da partida
         """
         self.state = False
 
-        rospy.Subscriber("/sumo/start", Bool, self._callback)
+        rospy.Subscriber(topic_name, Bool, self._callback)
         rospy.loginfo(f"Inicializando leitor do estado da partida {rospy.get_time()}")
 
     def _callback(self, data):
