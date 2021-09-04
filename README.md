@@ -151,7 +151,7 @@ from utils.motors import Motors
 Em seguida, crie uma variável do tipo `Motor`, especificando o tópico de cada motor.
 
 ```python
-motors = Motors("/topico/do/motor/esquerdo", "/topico/do/motor/direito")
+motors = Motors("topico/do/motor/esquerdo", "topico/do/motor/direito")
 ```
 
 Por fim, os comandos para os motores podem ser enviados por meio da função `drive()`, que recebe como parâmetro dois números inteiros de **-100** (força total de ré) até **100** (força total para frente).
@@ -167,7 +167,13 @@ No seu código poderão existir diversos comportamentos diferentes para o robô,
 - Atacar pela direita
 - Aguardar ataque
 
-E muitos outros possíveis! De forma que a estratégia que o robô irá seguir será definida somente na hora de executar o código, através da adição de um argumento extra no roslaunch do seu node de controle. Esse valor, que é um número inteiro, pode ser obtido no código utilizando o método `rospy.get_param()`.
+E muitos outros possíveis! De forma que a estratégia que o robô irá seguir será definida somente na hora de executar o código, através da adição de um argumento extra no roslaunch do seu node de controle.
+
+```bash
+roslaunch sumo_controller sumo_controller.launch 1
+```
+
+Esse valor pode ser qualquer número natural, e para obtê-lo no código, utilize o método `rospy.get_param()`.
 
 ```python
 strategy = rospy.get_param("strategy")
