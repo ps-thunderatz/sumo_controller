@@ -1,6 +1,6 @@
-# 🤖 ros-python-template 🐍
+# 🤖 Sumo Controller 🐍
 
-Esse é um exemplo de um projeto simples de ROS feito em Python, que segue a mesma estrutura de um projeto de Arduino
+Esse é um exemplo de um projeto simples de ROS feito em Python, que tem a função de controlar um robô de sumô.
 
 ## Índice<!-- omit in toc -->
 
@@ -10,33 +10,33 @@ Esse é um exemplo de um projeto simples de ROS feito em Python, que segue a mes
 - [📚 Como utilizar as bibliotecas](#-como-utilizar-as-bibliotecas)
   - [🔦 Sensores de distância](#-sensores-de-distância)
   - [➖ Sensores de linha](#-sensores-de-linha)
+  - [⚖️ IMU](#-imu)
+  - [🚦 Estado da Partida](#-estado-da-partida)
   - [🏎️ Motores](#️-motores)
+- [📖 Estratégias](#-estratégias))
 
 ## 🎈 Introdução
 
-A partir desse repositório que você construirá o código de controle do seu primeiro robô seguidor de linha simulado! Lembre-se de baixar (ou clonar) no mesmo workspace catkin que você criou enquanto seguia o tutorial de [como executar o projeto](https://thunderatz.github.io/ROSGazeboGuide/HowToRun/README.html).
-
-![Download](./docs/guia_download.png)
+A partir desse repositório que você construirá o código de controle do seu primeiro robô de sumô simulado! Lembre-se de baixar (ou clonar) no mesmo workspace catkin que você criou enquanto seguia o tutorial de [como executar o projeto](https://thunderatz.github.io/ROSGazeboGuide/HowToRun/README.html).
 
 ## 📂 Arquivos no projeto
 
-- **scripts/**
-  - **control.py** - Arquivo onde a lógica de controle do robô será implementada. É nesse arquivo que você e seu grupo deverão escrever o código do robô.
-  - **run.py** - Arquivo a ser executado para controlar o robô. **Não modifique!**
+- **src/**
+  - **sumo_controller_node.py** - Arquivo onde a lógica de controle do robô será implementada. É nesse arquivo que você e seu grupo deverão escrever o código do robô.
   - **utils/** - Pasta com bibliotecas para auxiliar no desenvolvimento do projeto.
 - **CMakeLists.txt** e **package.xml** - Arquivos de configuração do pacote ROS. **Não modifique!**
 
 ## 🔨 Como executar
 
-Antes de executar o código de controle, é preciso que a [simulação do Gazebo](https://github.com/ThundeRatz/gazebo_modelo_carrinho) esteja rodando. Depois disso, basta executar o comando
+Antes de executar o código de controle, é preciso que a [simulação do Gazebo](https://github.com/ps-thunderatz/sumo_simulation) esteja rodando. Depois disso, basta executar o comando
 
 ```bash
-rosrun pmr3100_controlador run.py
+roslaunch sumo_controller sumo_controller.launch
 ```
 
 ## 📚 Como utilizar as bibliotecas
 
-Dentro da pasta **scripts/utils/**, existem alguns módulos de Python para facilitar o desenvolvimento do código de controle do carrinho. A seguir, você encontrará uma breve descrição de como usar cada um deles.
+Dentro da pasta **src/utils/**, existem alguns módulos de Python para facilitar o desenvolvimento do código de controle do robô. A seguir, você encontrará uma breve descrição de como usar cada um deles.
 
 ### 🔦 Sensores de distância
 
@@ -52,36 +52,16 @@ Em seguida, crie uma variável do tipo `DistanceSensor`, especificando o tópico
 my_distance_sensor = DistanceSensor('topico/do/sensor/de/distancia')
 ```
 
-Na função de setup, é preciso inicializar nosso sensor de distância, para isso, chame o método `initialise()`.
-
-```python
-def setup():
-  # ...
-  my_distance_sensor.initialise()
-```
-
 Para ler o último valor de distância obtido pelo sensor, utilize o método `get_range()`.
 
 ```python
-def loop():
-  # ...
-  range_reading = my_distance_sensor.get_range()
+range_reading = my_distance_sensor.get_range()
 ```
 
-Juntando tudo, o código de leitura do sensor de distância deve ficar parecido com esse:
+Para obter os valores mínimos e máximos da leitura do sensor de distância, utilize a função `get_limits()`.
 
 ```python
-from utils.distance_sensor import DistanceSensor
-
-my_distance_sensor = DistanceSensor('topico/do/sensor/de/distancia')
-
-def setup():
-  # ...
-  my_distance_sensor.initialise()
-
-def loop():
-  # ...
-  range_reading = my_distance_sensor.get_range()
+min_range, max_range = my_distance_sensor.get_limits()
 ```
 
 ### ➖ Sensores de linha
@@ -98,84 +78,97 @@ Em seguida, crie uma variável do tipo `LineSensor`, especificando o tópico do 
 my_line_sensor = LineSensor('topico/do/sensor/de/linha')
 ```
 
-Na função de setup, é preciso inicializar nosso sensor de linha, para isso, chame o método `initialise()`.
-
-```python
-def setup():
-  # ...
-  my_line_sensor.initialise()
-```
-
 Para ler o último valor de luminosidade obtido pelo sensor, utilize o método `get_brightness()`.
 
 ```python
-def loop():
-  # ...
-  brightness_reading = my_line_sensor.get_brightness()
+brightness_reading = my_line_sensor.get_brightness()
 ```
 
-Juntando tudo, o código de leitura de um sensor de linha deve ficar parecido com esse:
+Dica: O robô possui 3 sensores de linha, entrar se quiser aproveitar o máximo das informações disponíveis, você precisará criar mais de um objeto LineSensor.
+
+### ⚖️ IMU
+
+Para utilizar a biblioteca dos sensores de linha, primeiro faça o import da classe `ImuSensor`, disponível no módulo `utils.imu_sensor`.
 
 ```python
-from utils.line_sensor import LineSensor
-
-my_line_sensor = LineSensor('topico/do/sensor/de/linha')
-
-def setup():
-  # ...
-  my_line_sensor.initialise()
-
-def loop():
-  # ...
-  brightness_reading = my_line_sensor.get_brightness()
+from utils.imu_sensor import ImuSensor
 ```
 
-Dica: você precisará criar diversos sensores de linha, um para cada sensor que você colocar no seu modelo, então armazene todos eles em uma lista para deixar o código mais organizado!
+Em seguida, crie uma variável do tipo `ImuSensor`, especificando o tópico do sensor.
+
+```python
+my_imu_sensor = ImuSensor('topico/do/sensor/imu')
+```
+
+Para ler o último valor de velocidade angular obtido pelo sensor, utilize o método `get_angular_velocity()`.
+
+```python
+angular_velocity = my_imu_sensor.get_angular_velocity()
+```
+
+Esse valor é do tipo [Vector3](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Vector3.html), e possuí componentes x, y e z. No caso do sumô, a mais importante é a componente y, que representa rotação no plano do dojô. Ela pode ser acessada através de `angular_velocity.y`.
+
+
+Para ler o último valor de aceleração linear obtido pelo sensor, utilize o método `get_linear_acceleration()`.
+
+Esse valor também é do tipo [Vector3](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Vector3.html) e portanto, é possível acessar seus atributos da mesma forma.
+
+```python
+linear_acceleration = my_imu_sensor.get_linear_acceleration()
+```
+
+Dica: Esses valores de velocidade angular e aceleração linear podem ser acumulados ao longo do tempo para se obter outras informações, como a orientação, velocidade e posição do robô no dojô.
+
+### 🚦 Estado da Partida
+
+Para utilizar a biblioteca de leitura do estado da partida, primeiro faça o import da classe `MatchState`, disponível no módulo `utils.match_state`.
+
+```python
+from utils.match_state import MatchState
+```
+
+Em seguida, crie uma variável do tipo `MatchState`.
+
+```python
+match_state = MatchState()
+```
+
+Para saber se a partida iniciou, utilize o método `started()`.
+
+```python
+if match_state.started():
+    # ...
+```
 
 ### 🏎️ Motores
 
+Para utilizar a biblioteca dos sensores de distância, primeiro faça o import da classe `Motors`, disponível no módulo `utils.motors`.
+
 ```python
 from utils.motors import Motors
 ```
 
-Para utilizar a biblioteca de controle dos motores, é necessário declarar uma variável do tipo `Motors`. Para fazer isso, é necessário especificar as interfaces de controle com cada motor.
+Em seguida, crie uma variável do tipo `Motor`, especificando o tópico de cada motor.
 
 ```python
 motors = Motors('/topico/do/motor/esquerdo', '/topico/do/motor/direito')
 ```
 
-Antes de utilizar a interface de controle, é necessário inicializar a variável por meio da função `initialise()`. É recomendável que isso seja feito dentro da função `setup()`.
+Por fim, os comandos para os motores podem ser enviados por meio da função `drive()`, que recebe como parâmetro dois números inteiros de **-100** (força total de ré) até **100** (força total para frente).
 
 ```python
-def setup():
-  # ...
-  motors.initialise()
+motors.drive(80, 80)
 ```
 
-Por fim, os comandos para os motores podem ser enviados por meio da função `drive()`, que recebe como parâmetro dois números inteiros de **-255** (força total para trás) até **255** (força total para frente).
+## 📖 Estratégias
+
+No seu código poderão existir diversos comportamentos diferentes para o robô, como: 
+- Atacar pela esquerda
+- Atacar pela direita
+- Aguardar ataque
+
+E muitos outros possíveis! De forma que a estratégia que o robô irá seguir será definida somente na hora de executar o código, através da adição de um argumento extra no roslaunch do seu node de controle. Esse valor, que é um número inteiro, pode ser obtido no código utilizando o método `rospy.get_param()`.
 
 ```python
-def loop():
-  # ...
-  motors.drive(80, 80)
-```
-
-Juntando tudo, o código de controle deve conter os trechos:
-
-```python
-from utils.motors import Motors
-
-# ...
-
-motors = Motors('/topico/do/motor/esquerdo', '/topico/do/motor/direito')
-
-# ...
-
-def setup():
-  # ...
-  motors.initialise()
-
-def loop():
-  # ...
-  motors.drive(80, 80)
+strategy = rospy.get_param("strategy")
 ```
