@@ -1,22 +1,17 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>sumo_controller</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>The sumo_controller package</description>
 
   <maintainer email="comp@thunderatz.org">Equipe ThundeRatz</maintainer>
 
   <author email="maria.rezende@thunderatz.org">Maria Fernanda Rezende</author>
-  <author email="gabriel.cosme@thunderatz.org">Gabriel Cosme</author>
-
+  <author email="gabriel.cosme@thunderatz.org">Gabriel Cosme Barbosa</author>
 
   <license>MIT</license>
 
-
-  <!-- Url tags are optional, but multiple are allowed, one per tag -->
-  <!-- Optional attribute type can be: website, bugtracker, or repository -->
-  <!-- Example: -->
-  <url type="repository">https://github.com/ps-thunderatz/sumo_controller/</url>
+  <url type="repository">https://github.com/ps-thunderatz/sumo_controller</url>
 
   <depend>rospy</depend>
 
