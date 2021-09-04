@@ -26,7 +26,8 @@ if __name__ == "__main__":
     except (rospy.ROSInterruptException, KeyboardInterrupt):
         pass
     finally:
-        left_motor_pub = rospy.Publisher('/modelo_carrinho/robot_left_controller/command', Float64, queue_size=1)
-        right_motor_pub = rospy.Publisher('/modelo_carrinho/robot_right_controller/command', Float64, queue_size=1)
+        left_motor_pub = rospy.Publisher('robot_left_controller/command', Float64, queue_size=1)
+        right_motor_pub = rospy.Publisher('robot_right_controller/command', Float64, queue_size=1)
+
         left_motor_pub.publish(Float64(0))
         right_motor_pub.publish(Float64(0))
