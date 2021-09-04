@@ -3,14 +3,13 @@
 
   <group ns="blue_team">
     <rosparam command="load" file="$(find sumo_controller)/config/line_sensor_param.yaml"/>
-    <rosparam name="strategy" type="int" value="$(arg strategy)"
+    <param name="strategy" type="int" value="$(arg strategy)"/>
 
     <node pkg="sumo_controller" type="sumo_controller_node.py" name="sumo_controller_node" output="screen">
     </node>
   </group>
 
-  <group ns="$red_team">
-    <node pkg="sumo_controller" type="example_node.py" name="example_node" output="screen">
-    </node>
+  <group ns="red_team">
+    <node pkg="sumo_controller" type="example_node.py" name="example_node" output="screen"/>
   </group>
 </launch>
