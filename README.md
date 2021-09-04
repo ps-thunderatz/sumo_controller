@@ -1,4 +1,4 @@
-# 🤖 Sumo Controller 🐍
+# 🤼 Sumo Controller 🤖
 
 Esse é um exemplo de um projeto simples de ROS feito em Python, que tem a função de controlar um robô de sumô.
 
@@ -13,7 +13,7 @@ Esse é um exemplo de um projeto simples de ROS feito em Python, que tem a funç
   - [⚖️ IMU](#-imu)
   - [🚦 Estado da Partida](#-estado-da-partida)
   - [🏎️ Motores](#️-motores)
-- [📖 Estratégias](#-estratégias))
+- [📖 Estratégias](#-estratégias)
 
 ## 🎈 Introdução
 
@@ -111,11 +111,11 @@ Esse valor é do tipo [Vector3](http://docs.ros.org/en/noetic/api/geometry_msgs/
 
 Para ler o último valor de aceleração linear obtido pelo sensor, utilize o método `get_linear_acceleration()`.
 
-Esse valor também é do tipo [Vector3](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Vector3.html) e portanto, é possível acessar seus atributos da mesma forma.
-
 ```python
 linear_acceleration = my_imu_sensor.get_linear_acceleration()
 ```
+
+Esse valor também é do tipo [Vector3](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Vector3.html) e portanto, é possível acessar seus atributos da mesma forma.
 
 Dica: Esses valores de velocidade angular e aceleração linear podem ser acumulados ao longo do tempo para se obter outras informações, como a orientação, velocidade e posição do robô no dojô.
 
