@@ -28,7 +28,7 @@ A partir desse repositório que você construirá o código de controle do seu p
 
 ## 🔨 Como executar
 
-Antes de executar o código de controle, é preciso que a [simulação do Gazebo](https://github.com/ps-thunderatz/sumo_simulation) esteja rodando. Depois disso, basta executar o comando
+Antes de executar o código de controle, é preciso que a [simulação do Gazebo](https://github.com/ps-thunderatz/sumo_simulation) esteja rodando. Depois disso, basta executar o comando:
 
 ```bash
 roslaunch sumo_controller sumo_controller.launch
@@ -38,6 +38,12 @@ A cor padrão do time é `"blue"`, mas é possível alterá-la para `"red"` com 
 
 ```bash
 roslaunch sumo_controller sumo_controller.launch team:="red"
+```
+
+Na pasta source também existe um node de exemplo `example_node.py`, que precisa ter os nomes dos tópicos corrigidos para funcionar. Para executar o seu node de controle contra o exemplo, execute o comando:
+
+```bash
+roslaunch sumo_controller example.launch
 ```
 
 ## 📚 Como utilizar as bibliotecas
@@ -133,10 +139,10 @@ Para utilizar a biblioteca de leitura do estado da partida, primeiro faça o imp
 from utils.match_state import MatchState
 ```
 
-Em seguida, crie uma variável do tipo `MatchState`, especificando o nome do tópico.
+Em seguida, crie uma variável do tipo `MatchState`, especificando o tópico do estado da partida.
 
 ```python
-match_state = MatchState("nome/do/topico")
+match_state = MatchState("topico/do/estado/da/partida")
 ```
 
 Para saber se a partida iniciou, utilize o método `started()`.
@@ -177,6 +183,12 @@ E muitos outros possíveis! De forma que a estratégia que o robô irá seguir s
 
 ```bash
 roslaunch sumo_controller sumo_controller.launch strategy:=1
+```
+
+Ou no roslaunch do seu node contra o exemplo.
+
+```bash
+roslaunch sumo_controller example.launch strategy:=1
 ```
 
 Esse valor pode ser qualquer número natural, e para obtê-lo no código, utilize o método `rospy.get_param()`.
