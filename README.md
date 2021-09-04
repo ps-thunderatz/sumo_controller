@@ -49,7 +49,7 @@ from utils.distance_sensor import DistanceSensor
 Em seguida, crie uma variável do tipo `DistanceSensor`, especificando o tópico do sensor.
 
 ```python
-my_distance_sensor = DistanceSensor('topico/do/sensor/de/distancia')
+my_distance_sensor = DistanceSensor("topico/do/sensor/de/distancia")
 ```
 
 Para ler o último valor de distância obtido pelo sensor, utilize o método `get_range()`.
@@ -75,7 +75,7 @@ from utils.line_sensor import LineSensor
 Em seguida, crie uma variável do tipo `LineSensor`, especificando o tópico do sensor.
 
 ```python
-my_line_sensor = LineSensor('topico/do/sensor/de/linha')
+my_line_sensor = LineSensor("topico/do/sensor/de/linha")
 ```
 
 Para ler o último valor de luminosidade obtido pelo sensor, utilize o método `get_brightness()`.
@@ -97,7 +97,7 @@ from utils.imu_sensor import ImuSensor
 Em seguida, crie uma variável do tipo `ImuSensor`, especificando o tópico do sensor.
 
 ```python
-my_imu_sensor = ImuSensor('topico/do/sensor/imu')
+my_imu_sensor = ImuSensor("topico/do/sensor/imu")
 ```
 
 Para ler o último valor de velocidade angular obtido pelo sensor, utilize o método `get_angular_velocity()`.
@@ -127,10 +127,10 @@ Para utilizar a biblioteca de leitura do estado da partida, primeiro faça o imp
 from utils.match_state import MatchState
 ```
 
-Em seguida, crie uma variável do tipo `MatchState`.
+Em seguida, crie uma variável do tipo `MatchState`, especificando o nome do tópico.
 
 ```python
-match_state = MatchState()
+match_state = MatchState("nome/do/topico")
 ```
 
 Para saber se a partida iniciou, utilize o método `started()`.
@@ -151,7 +151,7 @@ from utils.motors import Motors
 Em seguida, crie uma variável do tipo `Motor`, especificando o tópico de cada motor.
 
 ```python
-motors = Motors('/topico/do/motor/esquerdo', '/topico/do/motor/direito')
+motors = Motors("/topico/do/motor/esquerdo", "/topico/do/motor/direito")
 ```
 
 Por fim, os comandos para os motores podem ser enviados por meio da função `drive()`, que recebe como parâmetro dois números inteiros de **-100** (força total de ré) até **100** (força total para frente).

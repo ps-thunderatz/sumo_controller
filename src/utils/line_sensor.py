@@ -8,8 +8,8 @@ class LineSensor:
         Args:
             topic_name (string): Nome do tópico do sensor de linha
         """
-        white_line = rospy.get_param('white_line')
-        black_line = rospy.get_param('black_line')
+        white_line = rospy.get_param("white_line")
+        black_line = rospy.get_param("black_line")
         threshold = (white_line - black_line) / 3
 
         self.upper_bound = white_line - threshold
