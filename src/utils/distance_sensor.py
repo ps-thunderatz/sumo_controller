@@ -13,14 +13,14 @@ class DistanceSensor:
         self.min_range = 0
         self.topic_name = topic_name
 
-    def initialise(self):
+    def initialize(self):
         """Inicializa o subscriber para leitura do sensor
         """
         rospy.Subscriber(self.topic_name, Range, self._callback)
         rospy.loginfo(f"Inicializando sensor de distância {rospy.get_time()}")
 
     def _callback(self, data):
-        """Função de callback necessária para inicializar o subscriber
+        """Função de callback que atualiza os valores dos atributos
 
         Args:
             data (sensor_msgs.msg.Range): Dados da leitura do sensor
@@ -38,9 +38,9 @@ class DistanceSensor:
         return self.range
 
     def get_limits(self):
-        """Método para retornar o limite inferior e superior da leitura
+        """Método para obter o limite inferior e superior da leitura
 
         Returns:
             (float, float): Limite inferior e superior da leitura
         """
-        return (self.max_range,self.min_range)
+        return (self.max_range, self.min_range)

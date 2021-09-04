@@ -14,22 +14,22 @@ class LineSensor:
         white_line = rospy.get_param('white_line')
         black_line = rospy.get_param('black_line')
         threshold = (white_line - black_line) / 3
-        
+
         self.upper_bound = white_line - threshold
         self.lower_bound = black_line + threshold
         self.on_line = False
 
-    def initialise(self):
-        """Inicializa o subscriber para leitura do sensor
+    def initialize(self):
+        """Inicializa o subscriber para leitura do sensor de linha
         """
         rospy.Subscriber(self.topic_name, UInt32, self._callback)
         rospy.loginfo(f"Inicializando sensor de linha {rospy.get_time()}")
 
     def _callback(self, data):
-        """Função de callback necessária para receber informação do subscriber
+        """Função de callback que atualiza os valores dos atributos
 
         Args:
-            data (std_msgs/UInt32): Dados da leitura do sensor
+            data (std_msgs.msg.UInt32): Dados da leitura do sensor de linha
         """
         self._brightness = data.data
 
@@ -43,6 +43,9 @@ class LineSensor:
         return self._brightness
 
     def is_on_line(self):
-        """ Checa se o sensor de linha está lendo uma linha ou não
+        """ Checa se o sensor está lendo uma linha
+
+        Returns:
+            Bool: True se o sensor está lendo uma linha branca e False caso contrário
         """
         return self.on_line
