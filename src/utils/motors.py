@@ -11,17 +11,8 @@ class Motors:
             left_motor_topic (string): Nome do tópico do motor esquerdo
             right_motor_topic (string): Nome do tópico do motor direito
         """
-        self.left_motor_topic = left_motor_topic
-        self.right_motor_topic = right_motor_topic
-
-        self.left_pub = None
-        self.right_pub = None
-
-    def initialize(self):
-        """Inicializa o controlador dos motores
-        """
-        self.left_pub = rospy.Publisher(self.left_motor_topic, Float64, queue_size=1)
-        self.right_pub = rospy.Publisher(self.right_motor_topic, Float64, queue_size=1)
+        self.left_pub = rospy.Publisher(left_motor_topic, Float64, queue_size=1)
+        self.right_pub = rospy.Publisher(right_motor_topic, Float64, queue_size=1)
         rospy.loginfo(f"Inicializando motores {rospy.get_time()}")
 
     def drive(self, left_command, right_command):

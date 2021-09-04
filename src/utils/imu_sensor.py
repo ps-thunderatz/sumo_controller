@@ -10,12 +10,8 @@ class ImuSensor:
         """
         self.angular_velocity = 0
         self.linear_acceleration = 0
-        self.topic_name = topic_name
 
-    def initialize(self):
-        """Inicializa o subscriber para leitura da Imu
-        """
-        rospy.Subscriber(self.topic_name, Imu, self._callback)
+        rospy.Subscriber(topic_name, Imu, self._callback)
         rospy.loginfo(f"Inicializando a Imu {rospy.get_time()}")
 
     def _callback(self, data):

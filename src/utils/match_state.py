@@ -8,13 +8,9 @@ class MatchState:
         Args:
             topic_name (string): Nome do tópico do estado da partida
         """
-        self.topic_name = topic_name
         self.state = False
 
-    def initialize(self):
-        """Inicializa o subscriber para leitura do estado da partida
-        """
-        rospy.Subscriber(self.topic_name, Bool, self._callback)
+        rospy.Subscriber(topic_name, Bool, self._callback)
         rospy.loginfo(f"Inicializando leitor do estado da partida {rospy.get_time()}")
 
     def _callback(self, data):
