@@ -34,6 +34,12 @@ Antes de executar o código de controle, é preciso que a [simulação do Gazebo
 roslaunch sumo_controller sumo_controller.launch
 ```
 
+A cor padrão do time é `"blue"`, mas é possível alterá-la para `"red"` com o parâmetro `team`.
+
+```bash
+roslaunch sumo_controller sumo_controller.launch team:="red"
+```
+
 ## 📚 Como utilizar as bibliotecas
 
 Dentro da pasta **src/utils/**, existem alguns módulos de Python para facilitar o desenvolvimento do código de controle do robô. A seguir, você encontrará uma breve descrição de como usar cada um deles.
@@ -170,7 +176,7 @@ No seu código poderão existir diversos comportamentos diferentes para o robô,
 E muitos outros possíveis! De forma que a estratégia que o robô irá seguir será definida somente na hora de executar o código, através da adição de um argumento extra no roslaunch do seu node de controle.
 
 ```bash
-roslaunch sumo_controller sumo_controller.launch 1
+roslaunch sumo_controller sumo_controller.launch strategy:=1
 ```
 
 Esse valor pode ser qualquer número natural, e para obtê-lo no código, utilize o método `rospy.get_param()`.
