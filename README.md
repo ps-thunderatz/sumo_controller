@@ -17,7 +17,7 @@ Esse é um exemplo de um projeto simples de ROS feito em Python, que tem a funç
 
 ## 🎈 Introdução
 
-A partir desse repositório que você construirá o código de controle do seu primeiro robô de sumô simulado! Lembre-se de baixar (ou clonar) no mesmo workspace catkin que você criou enquanto seguia o tutorial de [como executar o projeto](https://thunderatz.github.io/ROSGazeboGuide/HowToRun/README.html).
+A partir desse repositório que você construirá o código de controle do seu primeiro robô de sumô simulado! Lembre-se de baixar (ou clonar) no mesmo workspace catkin que está o repositório da [simulação do Gazebo](https://github.com/ps-thunderatz/sumo_simulation).
 
 ## 📂 Arquivos no projeto
 
