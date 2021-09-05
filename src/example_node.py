@@ -2,6 +2,8 @@
 
 import rospy
 from std_msgs.msg import Float64
+from utils.motors import Motors
+from utils.match_state import MatchState
 
 CONTROL_RATE = 60  # Hz
 
@@ -12,11 +14,15 @@ def main():
     rospy.loginfo(f"Node de controle iniciado {rospy.get_time()}")
     rate = rospy.Rate(CONTROL_RATE)
 
-    # Inicialize os sensores e motores aqui
+    # Corrija o nome dos tópicos!!!
+    motors = Motors("topico/do/motor/esquerdo", "topico/do/motor/direito")
+    match_state = MatchState("topico/do/estado/da/partida")
 
     while not rospy.is_shutdown():
-
-        # Escreva aqui seu código para controlar o sumô
+        if match_state.started():
+            motors.drive(100, 100)
+        else:
+            motors.drive(0, 0)
 
         rate.sleep()
 

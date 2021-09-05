@@ -10,16 +10,12 @@ class ImuSensor:
         """
         self.angular_velocity = 0
         self.linear_acceleration = 0
-        self.topic_name = topic_name
 
-    def initialise(self):
-        """Inicializa o subscriber para leitura da Imu
-        """
-        rospy.Subscriber(self.topic_name, Imu, self._callback)
-        rospy.loginfo(f"Inicializando a IMU {rospy.get_time()}")
+        rospy.Subscriber(topic_name, Imu, self._callback)
+        rospy.loginfo(f"Inicializando a Imu {rospy.get_time()}")
 
     def _callback(self, data):
-        """Função de callback necessária para inicializar o subscriber
+        """Função de callback que atualiza os valores dos atributos
 
         Args:
             data (sensor_msgs.msg.Imu): Dados da leitura da Imu
@@ -28,17 +24,17 @@ class ImuSensor:
         self.linear_acceleration = data.linear_acceleration
 
     def get_angular_velocity(self):
-        """Método para obter o valor da variação da velocidade angular
+        """Método para obter o valor da velocidade angular do robô
 
         Returns:
-            float: Variação da velocidade angular nos 3 eixos
+            geometry_msgs.msg.Vector3: Velocidade angular nos 3 eixos
         """
         return self.angular_velocity
 
     def get_linear_acceleration(self):
-        """Método para obter o valor da variação da aceleração linear
+        """Método para obter o valor da aceleração linear do robô
 
         Returns:
-            float: Variação da aceleração linear
+            geometry_msgs.msg.Vector3: Aceleração linear nos 3 eixos
         """
         return self.linear_acceleration
