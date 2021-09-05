@@ -76,6 +76,8 @@ Para obter os valores mínimos e máximos da leitura do sensor de distância, ut
 min_range, max_range = my_distance_sensor.get_limits()
 ```
 
+Dica: O robô possui 3 sensores de distânica, então se quiser aproveitar o máximo das informações disponíveis, você precisará criar mais de um objeto `DistanceSensor`.
+
 ### ➖ Sensores de linha
 
 Para utilizar a biblioteca dos sensores de linha, primeiro faça o import da classe `LineSensor`, disponível no módulo `utils.line_sensor`.
@@ -90,13 +92,14 @@ Em seguida, crie uma variável do tipo `LineSensor`, especificando o tópico do 
 my_line_sensor = LineSensor("topico/do/sensor/de/linha")
 ```
 
-Para ler o último valor de luminosidade obtido pelo sensor, utilize o método `get_brightness()`.
+Para descobrir se o sensor está lendo uma linha branca, utilize o método `is_on_line()`.
 
 ```python
-brightness_reading = my_line_sensor.get_brightness()
+if my_line_sensor.is_on_line():
+    # ...
 ```
 
-Dica: O robô possui 3 sensores de linha, entrar se quiser aproveitar o máximo das informações disponíveis, você precisará criar mais de um objeto LineSensor.
+Dica: O robô possui 2 sensores de linha, então se quiser aproveitar o máximo das informações disponíveis, você precisará criar mais de um objeto `LineSensor`.
 
 ### ⚖️ IMU
 
@@ -118,7 +121,7 @@ Para ler o último valor de velocidade angular obtido pelo sensor, utilize o mé
 angular_velocity = my_imu_sensor.get_angular_velocity()
 ```
 
-Esse valor é do tipo [Vector3](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Vector3.html), e possuí componentes x, y e z. No caso do sumô, a mais importante é a componente y, que representa rotação no plano do dojô. Ela pode ser acessada através de `angular_velocity.y`.
+Esse valor é do tipo [Vector3](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Vector3.html), e possuí componentes x, y e z. No caso do sumô, a mais importante é a componente z, que representa rotação no plano do dojô. Ela pode ser acessada através de `angular_velocity.z`.
 
 
 Para ler o último valor de aceleração linear obtido pelo sensor, utilize o método `get_linear_acceleration()`.
