@@ -23,6 +23,7 @@ A partir desse repositório que você construirá o código de controle do seu p
 
 - **src/**
   - **sumo_controller_node.py** - Arquivo onde a lógica de controle do robô será implementada. É nesse arquivo que você e seu grupo deverão escrever o código do robô.
+  - **example_node.py** - Arquivo com um exemplo de node que pode ser usado para testes mais simples.
   - **utils/** - Pasta com bibliotecas para auxiliar no desenvolvimento do projeto.
 - **CMakeLists.txt** e **package.xml** - Arquivos de configuração do pacote ROS. **Não modifique!**
 
