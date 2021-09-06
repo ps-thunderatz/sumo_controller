@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
 
+"""Node to control the sumo robot
+
+File
+-------
+sumo_controller/src/sumo_controller_node.py
+
+Authors
+-------
+    ThundeRatz Team <comp@thunderatz.org>
+"""
+
 import rospy
 from std_msgs.msg import Float64
 

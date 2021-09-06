@@ -38,7 +38,7 @@ roslaunch sumo_controller sumo_controller.launch
 A cor padrão do time é `"blue"`, mas é possível alterá-la para `"red"` com o parâmetro `team`.
 
 ```bash
-roslaunch sumo_controller sumo_controller.launch team:="red"
+roslaunch sumo_controller sumo_controller.launch team:=red
 ```
 
 Na pasta source também existe um node de exemplo `example_node.py`, que precisa ter os nomes dos tópicos corrigidos para funcionar. Para executar o seu node de controle contra o exemplo, execute o comando:
@@ -178,7 +178,7 @@ motors.drive(80, 80)
 
 ## 📖 Estratégias
 
-No seu código poderão existir diversos comportamentos diferentes para o robô, como: 
+No seu código poderão existir diversos comportamentos diferentes para o robô, como:
 - Atacar pela esquerda
 - Atacar pela direita
 - Aguardar ataque
@@ -186,16 +186,16 @@ No seu código poderão existir diversos comportamentos diferentes para o robô,
 E muitos outros possíveis! De forma que a estratégia que o robô irá seguir será definida somente na hora de executar o código, através da adição de um argumento extra no roslaunch do seu node de controle.
 
 ```bash
-roslaunch sumo_controller sumo_controller.launch strategy:=1
+roslaunch sumo_controller sumo_controller.launch strategy:=some_strategy
 ```
 
 Ou no roslaunch do seu node contra o exemplo.
 
 ```bash
-roslaunch sumo_controller example.launch strategy:=1
+roslaunch sumo_controller example.launch strategy:=some_strategy
 ```
 
-Esse valor pode ser qualquer número natural, e para obtê-lo no código, utilize o método `rospy.get_param()`.
+Esse valor pode ter qualquer nome que você definir, e para obtê-lo no código, utilize o método `rospy.get_param()`.
 
 ```python
 strategy = rospy.get_param("strategy")

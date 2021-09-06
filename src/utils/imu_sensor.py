@@ -1,15 +1,29 @@
+"""Definition of the IMUSensor class
+
+File
+-------
+src/utils/imu_sensor.py
+
+Authors
+-------
+    ThundeRatz Team <comp@thunderatz.org>
+"""
+
 import rospy
 from sensor_msgs.msg import Imu
+from geometry_msgs.msg import Vector3
 
 class ImuSensor:
+    """Class to handle a IMU sensor"""
+
     def __init__(self, topic_name):
         """Cria um novo objeto para fazer a leitura da Imu
 
         Args:
             topic_name (string): Nome do tópico da Imu
         """
-        self.angular_velocity = 0
-        self.linear_acceleration = 0
+        self.angular_velocity = Vector3()
+        self.linear_acceleration = Vector3()
 
         rospy.Subscriber(topic_name, Imu, self._callback)
         rospy.loginfo(f"Inicializando a Imu {rospy.get_time()}")

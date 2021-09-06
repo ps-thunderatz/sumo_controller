@@ -1,7 +1,20 @@
+"""Definition of the LineSensor class
+
+File
+-------
+src/utils/line_sensor.py
+
+Authors
+-------
+    ThundeRatz Team <comp@thunderatz.org>
+"""
+
 import rospy
 from std_msgs.msg import UInt32
 
-class LineSensor:
+class LineSensor: # pylint: disable=too-few-public-methods
+    """Class to handle a line sensor"""
+
     def __init__(self, topic_name):
         """Cria um novo objeto para fazer a leitura do sensor de linha
 
@@ -26,9 +39,9 @@ class LineSensor:
             data (std_msgs.msg.UInt32): Dados da leitura do sensor de linha
         """
         if not self.on_line:
-            self.on_line = data.data < self.lower_bound
+            self.on_line = data.data > self.upper_bound
         else:
-            self.on_line = data.data < self.upper_bound
+            self.on_line = data.data > self.lower_bound
 
     def is_on_line(self):
         """ Checa se o sensor está lendo uma linha
