@@ -6,7 +6,7 @@ src/utils/__init__.py
 
 Authors
 -------
-    Computação ThundeRatz <comp@thunderatz.org>
+    ThundeRatz Team <comp@thunderatz.org>
 """
 
 from . import distance_sensor

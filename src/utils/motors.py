@@ -6,7 +6,7 @@ src/utils/motors.py
 
 Authors
 -------
-    Computação ThundeRatz <comp@thunderatz.org>
+    ThundeRatz Team <comp@thunderatz.org>
 """
 
 import rospy

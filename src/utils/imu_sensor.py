@@ -6,7 +6,7 @@ src/utils/imu_sensor.py
 
 Authors
 -------
-    Computação ThundeRatz <comp@thunderatz.org>
+    ThundeRatz Team <comp@thunderatz.org>
 """
 
 import rospy

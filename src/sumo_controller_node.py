@@ -8,7 +8,7 @@ sumo_controller/src/sumo_controller_node.py
 
 Authors
 -------
-    Computação ThundeRatz <comp@thunderatz.org>
+    ThundeRatz Team <comp@thunderatz.org>
 """
 
 import rospy
