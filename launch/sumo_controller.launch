@@ -1,10 +1,10 @@
 <launch>
   <arg name="team" default="blue"/>
-  <arg name="strategy" default="0"/>
+  <arg name="strategy" default="some_strategy"/>
 
   <group ns="$(arg team)_team">
     <rosparam command="load" file="$(find sumo_controller)/config/line_sensor_param.yaml"/>
-    <param name="strategy" type="int" value="$(arg strategy)"/>
+    <param name="strategy" type="str" value="$(arg strategy)"/>
 
     <node pkg="sumo_controller" type="sumo_controller_node.py" name="sumo_controller_node" output="screen"/>
   </group>
