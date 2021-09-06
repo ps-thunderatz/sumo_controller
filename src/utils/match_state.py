@@ -1,7 +1,20 @@
+"""Definition of the MatchState class.
+
+File
+-------
+src/utils/match_state.py
+
+Authors
+-------
+    Computação ThundeRatz <comp@thunderatz.org>
+"""
+
 import rospy
 from std_msgs.msg import Bool
 
-class MatchState:
+class MatchState: # pylint: disable=too-few-public-methods
+    """Class to handle the match state receiver."""
+
     def __init__(self, topic_name):
         """Cria um novo objeto para fazer a leitura do estado da partida
 

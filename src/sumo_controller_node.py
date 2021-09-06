@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
 
+"""Node of to control the team sumo
+
+File
+-------
+sumo_controller/src/sumo_controller_node.py
+
+Authors
+-------
+    Computação ThundeRatz <comp@thunderatz.org>
+"""
+
 import rospy
 from std_msgs.msg import Float64
 

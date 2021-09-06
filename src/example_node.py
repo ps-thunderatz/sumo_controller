@@ -1,5 +1,18 @@
 #!/usr/bin/env python3
 
+# pylint: disable-all
+
+"""Example of a simple sumo to use to test
+
+File
+-------
+sumo_controller/src/example_node.py
+
+Authors
+-------
+    Computação ThundeRatz <comp@thunderatz.org>
+"""
+
 import rospy
 from std_msgs.msg import Float64
 from utils.motors import Motors

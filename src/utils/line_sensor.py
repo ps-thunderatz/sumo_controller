@@ -1,7 +1,20 @@
+"""Definition of the LineSensor class.
+
+File
+-------
+src/utils/line_sensor.py
+
+Authors
+-------
+    Computação ThundeRatz <comp@thunderatz.org>
+"""
+
 import rospy
 from std_msgs.msg import UInt32
 
-class LineSensor:
+class LineSensor: # pylint: disable=too-few-public-methods
+    """Class to handle a line sensor."""
+
     def __init__(self, topic_name):
         """Cria um novo objeto para fazer a leitura do sensor de linha
 
