@@ -195,7 +195,7 @@ Ou no roslaunch do seu node contra o exemplo.
 roslaunch sumo_controller example.launch strategy:=some_strategy
 ```
 
-Esse valor pode ser qualquer string, e para obtê-lo no código, utilize o método `rospy.get_param()`.
+Esse valor pode ter qualquer nome que você definir, e para obtê-lo no código, utilize o método `rospy.get_param()`.
 
 ```python
 strategy = rospy.get_param("strategy")
