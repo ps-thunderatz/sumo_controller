@@ -26,9 +26,9 @@ class LineSensor:
             data (std_msgs.msg.UInt32): Dados da leitura do sensor de linha
         """
         if not self.on_line:
-            self.on_line = data.data < self.lower_bound
+            self.on_line = data.data > self.upper_bound
         else:
-            self.on_line = data.data < self.upper_bound
+            self.on_line = data.data > self.lower_bound
 
     def is_on_line(self):
         """ Checa se o sensor está lendo uma linha
