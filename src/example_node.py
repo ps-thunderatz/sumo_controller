@@ -2,7 +2,7 @@
 
 # pylint: disable-all
 
-"""Example of a simple sumo to use to test
+"""Example of a simple sumo node to test
 
 File
 -------

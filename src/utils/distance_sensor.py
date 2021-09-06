@@ -1,4 +1,4 @@
-"""Definition of the DistanceSensor class.
+"""Definition of the DistanceSensor class
 
 File
 -------
@@ -13,7 +13,7 @@ import rospy
 from sensor_msgs.msg import Range
 
 class DistanceSensor:
-    """Class to hanlde a distance sensor."""
+    """Class to hanlde a distance sensor"""
 
     def __init__(self, topic_name):
         """Cria um novo objeto para fazer a leitura do sensor de distância

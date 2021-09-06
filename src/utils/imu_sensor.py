@@ -1,4 +1,4 @@
-"""Definition of the IMUSensor class.
+"""Definition of the IMUSensor class
 
 File
 -------
@@ -14,7 +14,7 @@ from sensor_msgs.msg import Imu
 from geometry_msgs.msg import Vector3
 
 class ImuSensor:
-    """Class to handle a IMU sensor."""
+    """Class to handle a IMU sensor"""
 
     def __init__(self, topic_name):
         """Cria um novo objeto para fazer a leitura da Imu

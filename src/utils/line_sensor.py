@@ -1,4 +1,4 @@
-"""Definition of the LineSensor class.
+"""Definition of the LineSensor class
 
 File
 -------
@@ -13,7 +13,7 @@ import rospy
 from std_msgs.msg import UInt32
 
 class LineSensor: # pylint: disable=too-few-public-methods
-    """Class to handle a line sensor."""
+    """Class to handle a line sensor"""
 
     def __init__(self, topic_name):
         """Cria um novo objeto para fazer a leitura do sensor de linha

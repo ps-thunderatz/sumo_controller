@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Node of to control the team sumo
+"""Node to control the sumo robot
 
 File
 -------

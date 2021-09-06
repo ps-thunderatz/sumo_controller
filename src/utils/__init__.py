@@ -1,4 +1,4 @@
-"""Utilitary methods for the project.
+"""Utilitary methods for the project
 
 File
 -------
