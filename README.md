@@ -77,7 +77,7 @@ Para obter os valores mínimos e máximos da leitura do sensor de distância, ut
 min_range, max_range = my_distance_sensor.get_limits()
 ```
 
-Dica: O robô possui 3 sensores de distânica, então se quiser aproveitar o máximo das informações disponíveis, você precisará criar mais de um objeto `DistanceSensor`.
+Dica: O robô possui 3 sensores de distância, então se quiser aproveitar o máximo das informações disponíveis, você precisará criar mais de um objeto `DistanceSensor`.
 
 ### ➖ Sensores de linha
 
