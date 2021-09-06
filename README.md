@@ -25,6 +25,8 @@ A partir desse repositório que você construirá o código de controle do seu p
   - **sumo_controller_node.py** - Arquivo onde a lógica de controle do robô será implementada. É nesse arquivo que você e seu grupo deverão escrever o código do robô.
   - **example_node.py** - Arquivo com um exemplo de node que pode ser usado para testes mais simples.
   - **utils/** - Pasta com bibliotecas para auxiliar no desenvolvimento do projeto.
+- **launch/** - Pasta com os arquivos que executam o projeto.
+- **config/line_sensor_param.yaml** - Arquivo para calibração do sensor de linha.
 - **CMakeLists.txt** e **package.xml** - Arquivos de configuração do pacote ROS. **Não modifique!**
 
 ## 🔨 Como executar
