@@ -28,8 +28,8 @@ def main():
     rate = rospy.Rate(CONTROL_RATE)
 
     # Corrija o nome dos tópicos!!!
-    motors = Motors("topico/do/motor/esquerdo", "topico/do/motor/direito")
-    match_state = MatchState("topico/do/estado/da/partida")
+    motors = Motors("robot_left_controller/command", "robot_right_controller/command")
+    match_state = MatchState("/sumo/start")
 
     while not rospy.is_shutdown():
         if match_state.started():
@@ -46,8 +46,8 @@ if __name__ == "__main__":
         pass
     finally:
         # Corrija o nome dos tópicos!!!
-        left_motor_pub = rospy.Publisher("topico/do/motor/esquerdo", Float64, queue_size=1)
-        right_motor_pub = rospy.Publisher("topico/do/motor/direito", Float64, queue_size=1)
+        left_motor_pub = rospy.Publisher("robot_left_controller/command", Float64, queue_size=1)
+        right_motor_pub = rospy.Publisher("robot_right_controller/command", Float64, queue_size=1)
 
         left_motor_pub.publish(Float64(0))
         right_motor_pub.publish(Float64(0))
