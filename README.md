@@ -10,7 +10,7 @@ Esse é um exemplo de um projeto simples de ROS feito em Python, que tem a funç
 - [📚 Como utilizar as bibliotecas](#-como-utilizar-as-bibliotecas)
   - [🔦 Sensores de distância](#-sensores-de-distância)
   - [➖ Sensores de linha](#-sensores-de-linha)
-  - [⚖️ IMU](#-imu)
+  - [⚖️ IMU](#%EF%B8%8F-imu)
   - [🚦 Estado da Partida](#-estado-da-partida)
   - [🏎️ Motores](#️-motores)
 - [📖 Estratégias](#-estratégias)
