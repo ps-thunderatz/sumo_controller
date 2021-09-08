@@ -2,7 +2,7 @@
 
 # pylint: disable-all
 
-"""Simples node de exemplo para realização de testes
+"""Node simples de exemplo para realização de testes
 
 File
 -------
