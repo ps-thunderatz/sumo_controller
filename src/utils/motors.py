@@ -1,4 +1,4 @@
-"""Definition of the Motor class
+"""Definição da classe Motors
 
 File
 -------
@@ -15,7 +15,7 @@ from std_msgs.msg import Float64
 MAX_VEL = 30  # rad/s
 
 class Motors: # pylint: disable=too-few-public-methods
-    """Class to control the motors"""
+    """Classe para controlar os motores do robô"""
 
     def __init__(self, left_motor_topic, right_motor_topic):
         """Cria um novo objeto para controlar os dois motores do robô
